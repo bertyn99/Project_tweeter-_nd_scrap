@@ -5,4 +5,4 @@ gem 'gmail'
 gem 'dotenv'
 gem 'json'
 gem 'twitter'
-gem'nokogiri
+gem 'nokogiri'
