@@ -26,7 +26,8 @@ when 2
   Mailer.new.send_emails_from_json
   Mailer.log_out
 when 3
-  Twitters.new
+  Twitters.new.handle_twitter
+
 end
 
 Done.new(input).affichage
