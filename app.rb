@@ -3,12 +3,16 @@ require_relative 'lib/app/townhall_mail'
 require_relative 'lib/app/townhall_scrapper'
 require_relative 'lib/views/done'
 
-puts "Vous avez le choix entre 3 actions : "
-puts "\nTapez 1 pour créer un fichier JSON avec les mails des mairies de 3 départements"
-puts "\nTapez 2 pour envoyer des mails de promotion pour THP à ces mairies (le JSON est déjà créé)"
-puts "\nTapez 3 pour twitter ces mêmes mairies à propos de THP"
-print "> "
-input = gets.to_i
+
+input = 0
+while input != 1 && input != 2 && input != 3
+  puts "Vous avez le choix entre 3 actions : "
+  puts "\nTapez 1 pour créer un fichier JSON avec les mails des mairies de 3 départements"
+  puts "\nTapez 2 pour envoyer des mails de promotion pour THP à ces mairies (le JSON est déjà créé)"
+  puts "\nTapez 3 pour twitter ces mêmes mairies à propos de THP"
+  print "> "
+  input = gets.to_i
+end
 
 case input
 when 1
@@ -22,7 +26,7 @@ when 2
   Mailer.new.send_emails_from_json
   Mailer.log_out
 when 3
-  Twitter.new
+  Twitters.new
 end
 
 Done.new(input).affichage

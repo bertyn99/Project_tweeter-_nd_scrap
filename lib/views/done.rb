@@ -11,11 +11,11 @@ class Done
   def affichage
     case @input
     when 1
-      puts "Le fichier JSON est rempli avec les coordonnées de mairies du Var, du Morbihan et de la Lozère, vous pouvez vérifier scrapping.json"
+      puts "Le fichier JSON est rempli avec les coordonnées de mairies du Var, du Morbihan et de la Lozère, vous pouvez vérifier scrapping.json !"
     when 2
-      puts "Des mails ont été envoyés à un maximum de mairies du Var, du Morbihan et de la Lozère"
+      puts "Des mails ont été envoyés à un maximum de mairies du Var, du Morbihan et de la Lozère !"
     when 3
-      puts "Des tweets ont été envoyés aux mairies ayant Twitter et avec un nom normal"
+      puts "Des tweets ont été envoyés aux mairies ayant Twitter et avec un nom normal !"
     end
   end
 
