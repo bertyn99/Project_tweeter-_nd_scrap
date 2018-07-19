@@ -8,13 +8,13 @@ class Mailer
 
   def initialize
 
-    @mail = ENV['MAIL']
-    @password = ENV['PASSWORD']
-    @gmail = Gmail.connect(@mail,@password)
-    @file = File.read('db/scrapping.json')
+    @mail = ENV['MAIL']         #Récupère l'adresse mail contenue dans le fichier .env
+    @password = ENV['PASSWORD'] #Pareil pour le mot de passe
+    @gmail = Gmail.connect(@mail,@password) #Login sur le compte gmail
+    @file = File.read('db/scrapping.json')  #Lecture du fichier json
 
   end
-
+  #Méthode pour envoyer un mail suivant une adresse
   def send_email(email_adress)
     email = @gmail.compose do
       to email_adress
@@ -29,7 +29,7 @@ class Mailer
     email.deliver! # or: gmail.deliver(email)
 
   end
-
+  #Méthode pour envoyer un mail à toutes les adresses du fichier json
   def send_emails_from_json(file = @file)
     data_hash = JSON.parse(file)
 
@@ -41,7 +41,7 @@ class Mailer
     }
 
   end
-
+  #Logout du compte gmail
   def log_out
     @gmail.logout
   end
