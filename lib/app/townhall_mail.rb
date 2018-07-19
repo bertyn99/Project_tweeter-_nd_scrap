@@ -1,7 +1,8 @@
 require 'gmail'
 require 'dotenv'
 require 'json'
-Dotenv.load('../../.env')
+
+Dotenv.load('.env')
 
 class Mailer
 
@@ -10,7 +11,7 @@ class Mailer
     @mail = ENV['MAIL']
     @password = ENV['PASSWORD']
     @gmail = Gmail.connect(@mail,@password)
-    @file = File.read('../../db/scrapping.json')
+    @file = File.read('db/scrapping.json')
 
   end
 
@@ -23,7 +24,6 @@ class Mailer
 
     Déjà 500 personnes sont passées par The Hacking Project. Est-ce que votre mairie veut changer le monde avec nous ?
 
-
     Charles, co-fondateur de The Hacking Project pourra répondre à toutes vos questions : 06.95.46.60.80"
     end
     email.deliver! # or: gmail.deliver(email)
@@ -34,7 +34,10 @@ class Mailer
     data_hash = JSON.parse(file)
 
     data_hash.each{ |tab_mairie|
-      tab_mairie.each{ |mairie| send_email(mairie["email"]) if mairie["email"] != ""}
+      tab_mairie.each do |mairie|
+         send_email(mairie["email"]) if mairie["email"] != ""
+         p "mail envoyé à #{mairie["name"]}"
+      end
     }
 
   end
@@ -44,5 +47,3 @@ class Mailer
   end
 
 end
-
-mail = Mailer.new.send_emails_from_json

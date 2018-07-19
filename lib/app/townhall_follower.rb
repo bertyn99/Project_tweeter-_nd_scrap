@@ -18,13 +18,13 @@ b=2
 n = 0 #position destinataires
 
 while a != b # création d'une boucle infini (condition impossible)
-  
+
 	if n <= 2
-	
+
   		random = rand(0..9) # random entre les 9 phrases
   		phrases = [
-		"Bonjour #{@pseudotwitter[n]}, je suis élève à The Hacking Project une formation gratuite au code, ceci est un bot Twitter trop cool !", 
-		"Salut #{@pseudotwitter[n]}, vous connaissez The Hacking Project ? C’est une formation gratuite au code et je vous contacte grâce à un bot !" , 
+		"Bonjour #{@pseudotwitter[n]}, je suis élève à The Hacking Project une formation gratuite au code, ceci est un bot Twitter trop cool !",
+		"Salut #{@pseudotwitter[n]}, vous connaissez The Hacking Project ? C’est une formation gratuite au code et je vous contacte grâce à un bot !" ,
 		"Coucou #{@pseudotwitter[n]}, je vous contacte grâce un bot. Codé grâce à ma formation chez The Hacking project",
 		"Hello #{@pseudotwitter[n]}, je vous envois ce message grâce à un bot appris durant ma formation The Hacking project (totalement gratuit!)",
 		"#{@pseudotwitter[n]}, ce message est généré par un bot que j'ai appris a coder durant ma formation The Hacking Project",
@@ -42,5 +42,3 @@ while a != b # création d'une boucle infini (condition impossible)
 		n = 1
 	end
 end
-    
- 

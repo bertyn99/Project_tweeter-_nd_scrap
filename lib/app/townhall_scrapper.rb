@@ -6,7 +6,7 @@ require 'json'
 
 class Scrapping
 
-  def initialize(url_department)
+  def initialize(*url_department)
     @url_department = url_department
     @hash = []
   end
@@ -34,11 +34,11 @@ class Scrapping
 
   end
 
-  def annuaire_mail_ville
+  def annuaire_mail_ville(urls)
 
   	i=0
 
-    array = get_all_the_urls_of_townhalls(@url_department)
+    array = get_all_the_urls_of_townhalls(urls)
 
   	@villes=array[0]
   	@cp=array[1].map{ |url| get_the_CP_of_a_townhal_from_its_webpage("http://www.annuaire-des-mairies.com/#{url}") }
@@ -53,12 +53,3 @@ class Scrapping
   end
 
 end
-
-var=Scrapping.new("http://www.annuaire-des-mairies.com/var.html").annuaire_mail_ville
-morbihan = Scrapping.new("http://www.annuaire-des-mairies.com/morbihan.html").annuaire_mail_ville
-lozere = Scrapping.new("http://www.annuaire-des-mairies.com/lozere.html").annuaire_mail_ville
-
-tab = [var,morbihan,lozere]
-
-
- File.write("../../db/scrapping.json",JSON.generate(tab))
