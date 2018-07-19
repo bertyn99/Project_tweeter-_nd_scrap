@@ -1,6 +1,6 @@
 require 'twitter'
 require 'dotenv'
-Dotenv.load
+Dotenv.load('.env')
 class Twitters
   attr_accessor :client
   def initialize
