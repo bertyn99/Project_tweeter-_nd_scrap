@@ -50,5 +50,8 @@ array = get_all_the_urls_of_morbihan_townhalls(page_url)
 
 end
 var=Scrapping.new
-morbillan=Scrapping.new
-#puts scr.annuaire_mail_ville("http://www.annuaire-des-mairies.com/var.html")
+morbihan=Scrapping.new
+lozere=Scrapping.new
+puts var.annuaire_mail_ville("http://www.annuaire-des-mairies.com/var.html")
+puts morbihan.annuaire_mail_ville("http://www.annuaire-des-mairies.com/morbihan.html")
+puts lozere.annuaire_mail_ville("http://www.annuaire-des-mairies.com/lozere.html")
