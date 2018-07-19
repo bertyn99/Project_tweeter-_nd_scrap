@@ -10,7 +10,7 @@ class Mailer
     @mail = ENV['MAIL']
     @password = ENV['PASSWORD']
     @gmail = Gmail.connect(@mail,@password)
-    @file = File.read('../../db/mails.json')
+    @file = File.read('../../db/scrapping.json')
 
   end
 
@@ -33,7 +33,9 @@ class Mailer
   def send_emails_from_json(file = @file)
     data_hash = JSON.parse(file)
 
-    data_hash.each{ |mairie| send_email(mairie["email"])}
+    data_hash.each{ |tab_mairie|
+      tab_mairie.each{ |mairie| send_email(mairie["email"]) if mairie["email"] != ""}
+    }
 
   end
 
@@ -42,3 +44,5 @@ class Mailer
   end
 
 end
+
+mail = Mailer.new.send_emails_from_json
