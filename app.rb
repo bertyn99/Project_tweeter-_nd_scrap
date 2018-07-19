@@ -4,13 +4,20 @@ require_relative 'lib/app/townhall_scrapper'
 require_relative 'lib/views/done'
 
 
-input = 0
+puts "Vous avez le choix entre 3 actions : "
+puts "\n-> Tapez 1 pour créer un fichier JSON avec les mails des mairies de 3 départements"
+puts "\n-> Tapez 2 pour envoyer des mails de promotion pour THP à ces mairies (le JSON est déjà créé)"
+puts "\n-> Tapez 3 pour twitter ces mêmes mairies à propos de THP"
+print "\n> "
+input = gets.to_i
+
 while input != 1 && input != 2 && input != 3
-  puts "Vous avez le choix entre 3 actions : "
-  puts "\nTapez 1 pour créer un fichier JSON avec les mails des mairies de 3 départements"
-  puts "\nTapez 2 pour envoyer des mails de promotion pour THP à ces mairies (le JSON est déjà créé)"
-  puts "\nTapez 3 pour twitter ces mêmes mairies à propos de THP"
-  print "> "
+  puts "\n*******************Choix invalide !*******************"
+  puts "\nVous avez le choix entre 3 actions : "
+  puts "\n-> Tapez 1 pour créer un fichier JSON avec les mails des mairies de 3 départements"
+  puts "\n-> Tapez 2 pour envoyer des mails de promotion pour THP à ces mairies (le JSON est déjà créé)"
+  puts "\n-> Tapez 3 pour twitter ces mêmes mairies à propos de THP"
+  print "\n> "
   input = gets.to_i
 end
 
