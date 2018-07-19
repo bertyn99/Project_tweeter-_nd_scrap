@@ -20,7 +20,6 @@ class Twitters
 
      @var=@twitter_mairie.flatten!#transforme le tableau de 3 tableau d annuaire des ville en un seule tableau d'email à une dimension
 
-    
     n = 0 
     while n==599
     	 	if n <= 599
