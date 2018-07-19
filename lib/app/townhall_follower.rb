@@ -22,19 +22,19 @@ class Twitters
   end
  
   def handle_twitter
-   self.load_json()
+   self.load_json()#on chargela methode json
   n = 0 
-   while n==599
-    	 	if n <= 599
+   while n<599
+    	 	
     			tab_twitter=@client.user_search(@twitter_mairie[n])
     				 n += 1
 
-    			if @client.user_search(@twitter_mairie[n]).empty?
-    				@client.update("Bonjour #{tab[0].name}")
+    			if !@client.user_search(@twitter_mairie[n]).empty?
+    				@client.update("Bonjour #{tab_twitter[0].name}")
 
     			end
     			n += 1
-    		end
+    		
      end
     end
   end  
