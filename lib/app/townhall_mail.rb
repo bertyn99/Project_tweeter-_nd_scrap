@@ -1,19 +1,20 @@
 require 'gmail'
 require 'dotenv'
 require 'json'
-Dotenv.load('../../.env')
+
+Dotenv.load('.env')
 
 class Mailer
 
   def initialize
 
-    @mail = ENV['MAIL']
-    @password = ENV['PASSWORD']
-    @gmail = Gmail.connect(@mail,@password)
-    @file = File.read('../../db/scrapping.json')
+    @mail = ENV['MAIL']         #Récupère l'adresse mail contenue dans le fichier .env
+    @password = ENV['PASSWORD'] #Pareil pour le mot de passe
+    @gmail = Gmail.connect(@mail,@password) #Login sur le compte gmail
+    @file = File.read('db/scrapping.json')  #Lecture du fichier json
 
   end
-
+  #Méthode pour envoyer un mail suivant une adresse
   def send_email(email_adress)
     email = @gmail.compose do
       to email_adress
@@ -23,26 +24,26 @@ class Mailer
 
     Déjà 500 personnes sont passées par The Hacking Project. Est-ce que votre mairie veut changer le monde avec nous ?
 
-
     Charles, co-fondateur de The Hacking Project pourra répondre à toutes vos questions : 06.95.46.60.80"
     end
     email.deliver! # or: gmail.deliver(email)
 
   end
-
+  #Méthode pour envoyer un mail à toutes les adresses du fichier json
   def send_emails_from_json(file = @file)
     data_hash = JSON.parse(file)
 
     data_hash.each{ |tab_mairie|
-      tab_mairie.each{ |mairie| send_email(mairie["email"]) if mairie["email"] != ""}
+      tab_mairie.each do |mairie|
+         send_email(mairie["email"]) if mairie["email"] != ""
+         p "mail envoyé à #{mairie["name"]}"
+      end
     }
 
   end
-
+  #Logout du compte gmail
   def log_out
     @gmail.logout
   end
 
 end
-
-mail = Mailer.new.send_emails_from_json
