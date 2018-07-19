@@ -11,7 +11,7 @@ client = Twitter::REST::Client.new do |config|
 end
 
 
-@pseudotwitter = []
+@pseudotwitter = ["@mairieRousse","@mairieRocles","@mairieQuezac"]
 
 a=1
 b=2
@@ -19,7 +19,7 @@ n = 0 #position destinataires
 
 while a != b # création d'une boucle infini (condition impossible)
   
-	if n <= 371
+	if n <= 2
 	
   		random = rand(0..9) # random entre les 9 phrases
   		phrases = [
@@ -36,7 +36,7 @@ while a != b # création d'une boucle infini (condition impossible)
 
   		client.update(phrases[random])
     	n = n + 1
-    	sleep 87 #attend 87 secondes entre chaque tweets, pour ne pas dépasser les 100 tweet/h ni 1000 tweet/jour
+    	#sleep 87 #attend 87 secondes entre chaque tweets, pour ne pas dépasser les 100 tweet/h ni 1000 tweet/jour
 
 	else
 		n = 1
