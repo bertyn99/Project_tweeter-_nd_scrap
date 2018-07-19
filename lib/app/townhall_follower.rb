@@ -12,7 +12,7 @@ end
 
 name =JSON.parse(File.read('../../db/scrapping.json'))
 @twitter_mairie=name.map {|tab|
-	tab.map{ |v| "@mairie#{v["name"]}"
+	tab.map{ |v| "mairie#{v["name"]}"
 }
 
 }
@@ -55,7 +55,19 @@ n = 0 #position destinataires
 # 		n = 1
 # 	end
 #end
-p client.user_search(@var)
+while n==599
+	 	if n <= 599
+			tab_twitter=client.user_search(@var[n])
+				 n += 1
+				 
+			if client.user_search(@var[n]).empty?
+				client.update("Bonjour #{tab[0].name}")
+				
+			end
+			n += 1
+		end
+end	
+
 
     
  
